@@ -22,14 +22,19 @@ public class CadastroLivros{
         livro2.autor.setCpf("192.168.115.129-24");
         livro2.mostrarInformacoes();
 
-        Livros livro3 = new Livros();
-        livro3.setNome("Cacildis Birits Forevis");
-        livro3.setDescricao("Mussum Ipsum, cacilds vidis litro abertis. Quem num gosta di mé, boa gentis num é. Mais vale um bebadis conhecidiss, que um alcoolatra anonimis. Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo! A ordem dos tratores não altera o pão duris.");
-        livro3.setIsbn("051-5151515151");
-        livro3.setValor(51.51);
-        livro3.autor.setNome("Mussum");
-        livro3.autor.setEmail("cacildis@gmail.com");
-        livro3.autor.setCpf("1051.051.051.051-51");
+        EBooks livro3 = new EBooks();
+        livro3.setNome("Clean Code: A Handbook of Agile Software Craftsmanship");
+        livro3.setDescricao("Even bad code can function. But if code isn’t clean, it can bring a development organization to its knees. Every year, countless hours and significant resources are lost because of poorly written code. But it doesn’t have to be that way.");
+        livro3.setIsbn("9780132350884");
+        livro3.setValor(85.92);
+        livro3.setFormato("eBook Kindle");
+        livro3.setTamanho(41.903);
+        livro3.setAudio(false);
+        livro3.setDemo(true);
+        livro3.autor.setNome("Robert C. Martin Series");
+        livro3.autor.setEmail("refactoring@gmail.com");
+        livro3.autor.setCpf("101.001.110.100-01");
+        
         livro3.mostrarInformacoes();
     }
 }
