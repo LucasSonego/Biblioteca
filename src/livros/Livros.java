@@ -43,4 +43,14 @@ public class Livros{
     public void setValor(double valor) {
         this.valor = valor;
     }
+
+    public void reajustarValor(float reajuste){
+        if(reajuste < .3){
+            this.setValor(valor+= valor*reajuste);
+            System.out.println("Valor reajustado em:" + String.format("%.1f", reajuste*100) + "%");
+        }else{
+            System.out.println("Não foi possivel reajustar o valor");
+            System.out.println("O reajuste inserido excedeu o limite de 30% de reajuste");
+        }
+    }
 }
