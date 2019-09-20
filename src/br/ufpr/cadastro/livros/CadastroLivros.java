@@ -36,5 +36,14 @@ public class CadastroLivros{
         livro3.autor.setCpf("101.001.110.100-01");
         
         livro3.mostrarInformacoes();
+
+        final float maximo = (float) 0.3;
+        float reajuste = (float) 0.25;
+        if(livro1.reajustarValor(reajuste, maximo) == true){
+            System.out.println("Valor reajustado em:" + String.format("%.1f", reajuste*100) + "%");
+        }else{
+            System.out.println("Não foi possivel reajustar o valor");
+            System.out.println("O reajuste inserido excedeu o limite de 30% de reajuste");
+        }
     }
 }
