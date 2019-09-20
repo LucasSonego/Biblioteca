@@ -1,4 +1,4 @@
-package livros;
+package br.ufpr.cadastro.livros;
 
 class EBooks extends Livros{
     private String formato;

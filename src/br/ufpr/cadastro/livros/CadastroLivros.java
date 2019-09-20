@@ -1,4 +1,4 @@
-package livros;
+package br.ufpr.cadastro.livros;
 
 public class CadastroLivros{
     public static void main(String[] args) {
