@@ -1,11 +1,12 @@
-package livros;
+package br.ufpr.cadastro.livros;
+
+import br.ufpr.cadastro.pessoa.Autor;
 
 public class Livros{
     private String nome,descricao,isbn;
     private double valor;
 
     /*public*/ Autor autor = new Autor();
-
     public void mostrarInformacoes(){
         System.out.println("\n\n=-=-=-=Livro=-=-=-=");
         
