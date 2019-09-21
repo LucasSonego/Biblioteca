@@ -1,7 +1,10 @@
 package br.ufpr.cadastro.livros;
 
+import java.util.ArrayList;
+
 public class CadastroLivros{
     public static void main(String[] args) {
+        ArrayList<Livros> livros = new ArrayList<Livros>();
         Livros livro1 = new Livros();
         livro1.setNome("Sistemas Operacionais Modernos");
         livro1.setDescricao("A 4ª edição de Sistemas operacionais modernos foi extensamente revisada e atualizada para incorporar os últimos desenvolvimentos em tecnologias de sistemas operacionais. Além de tratar do sistema UNIX, o livro traz como novidade a abordagem do Windows 8 e 8.1, assim como um foco maior em Linux e a introdução da plataforma Android.");
@@ -10,7 +13,7 @@ public class CadastroLivros{
         livro1.autor.setNome("Andrew Stuart Tanenbaum");
         livro1.autor.setEmail("tanenbaum@gmail.com");
         livro1.autor.setCpf("192.168.115.129-24");
-        livro1.mostrarInformacoes();
+        livros.add(livro1);
 
         Livros livro2 = new Livros();
         livro2.setNome("Organização Estruturada de Computadores");
@@ -20,7 +23,7 @@ public class CadastroLivros{
         livro2.autor.setNome("Andrew Stuart Tanenbaum");
         livro2.autor.setEmail("tanenbaum@gmail.com");
         livro2.autor.setCpf("192.168.115.129-24");
-        livro2.mostrarInformacoes();
+        livros.add(livro2);
 
         EBooks livro3 = new EBooks();
         livro3.setNome("Clean Code: A Handbook of Agile Software Craftsmanship");
@@ -34,8 +37,9 @@ public class CadastroLivros{
         livro3.autor.setNome("Robert C. Martin Series");
         livro3.autor.setEmail("refactoring@gmail.com");
         livro3.autor.setCpf("101.001.110.100-01");
-        
-        livro3.mostrarInformacoes();
+        livros.add(livro3);
+
+        livros.forEach(l->l.mostrarInformacoes());
 
         final float maximo = (float) 0.3;
         float reajuste = (float) 0.25;
