@@ -1,10 +1,16 @@
 package br.ufpr.cadastro.livros;
 
 import java.util.ArrayList;
+import java.util.Locale;
+import java.text.NumberFormat;
 
 public class CadastroLivros{
+
+    static Locale ptBR = new Locale("pt", "BR");
+    static NumberFormat numberFormat = NumberFormat.getCurrencyInstance(ptBR);
     public static void main(String[] args) {
         ArrayList<Livros> livros = new ArrayList<Livros>();
+        
         Livros livro1 = new Livros();
         livro1.setNome("Sistemas Operacionais Modernos");
         livro1.setDescricao("A 4ª edição de Sistemas operacionais modernos foi extensamente revisada e atualizada para incorporar os últimos desenvolvimentos em tecnologias de sistemas operacionais. Além de tratar do sistema UNIX, o livro traz como novidade a abordagem do Windows 8 e 8.1, assim como um foco maior em Linux e a introdução da plataforma Android.");
@@ -43,11 +49,20 @@ public class CadastroLivros{
 
         final float maximo = (float) 0.3;
         float reajuste = (float) 0.25;
-        if(livro1.reajustarValor(reajuste, maximo) == true){
-            System.out.println("Valor reajustado em:" + String.format("%.1f", reajuste*100) + "%");
+        float reajuste2 = (float) 0.35;
+        reajustar(livros.get(0), reajuste, maximo);
+        reajustar(livros.get(2), reajuste2, maximo);
+    }
+    
+    public static void reajustar(Livros livro, float reajuste, float maximo){
+        double valor = livro.getValor();
+        System.out.println("\nReajustando o valor do livro " + livro.getNome() + "...\n");
+        if(livro.reajustarValor(reajuste, maximo) == true){
+            System.out.println("Valor reajustado em: " + String.format("%.1f", reajuste*100) + "%");
+            System.out.println(numberFormat.format(valor)+ " -> " + numberFormat.format(livro.getValor()));
         }else{
             System.out.println("Não foi possivel reajustar o valor");
-            System.out.println("O reajuste inserido excedeu o limite de 30% de reajuste");
+            System.out.println("O reajuste inserido excedeu o limite de " + String.format("%.2f", maximo*100) + "% de reajuste");
         }
     }
 }
