@@ -1,10 +1,15 @@
 package br.ufpr.cadastro.livros;
 
 import br.ufpr.cadastro.pessoa.Autor;
+import java.util.Locale;
+import java.text.NumberFormat;
 
 public class Livros{
     private String nome,descricao,isbn;
     private double valor;
+
+    Locale ptBR = new Locale("pt", "BR");
+    NumberFormat numberFormat = NumberFormat.getCurrencyInstance(ptBR);
 
     /*public*/ Autor autor = new Autor();
     public void mostrarInformacoes(){
@@ -13,7 +18,7 @@ public class Livros{
         System.out.println("Nome: " + this.nome);
         System.out.println("Descrição: "+ this.descricao);
         System.out.println("ISBN: " + this.isbn);
-        System.out.println("Valor: " + String.format("%.2f", this.valor));
+        System.out.println("Valor: " + numberFormat.format(this.getValor()));
         this.autor.mostrarInformacoes();
     }
 
