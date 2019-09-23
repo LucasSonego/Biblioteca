@@ -5,7 +5,10 @@ import java.util.Locale;
 import java.text.NumberFormat;
 
 public class Livros{
-    private String nome,descricao,isbn;
+    private String nome;
+    private String descricao;
+    private String isbn10;
+    private String isbn13;
     private double valor;
 
     Locale ptBR = new Locale("pt", "BR");
@@ -15,7 +18,8 @@ public class Livros{
     public void mostrarInformacoes(){
         System.out.println("Nome: " + this.nome);
         System.out.println("Descrição: "+ this.descricao);
-        System.out.println("ISBN: " + this.isbn);
+        System.out.println("ISBN-10: " + this.isbn10);
+        System.out.println("ISBN-13: " + this.isbn13);
         System.out.println("Valor: " + numberFormat.format(this.getValor()));
     }
 
@@ -33,11 +37,18 @@ public class Livros{
         this.descricao = descricao;
     }
 
-    public String getIsbn() {
-        return this.isbn;
+    public String getIsbn10() {
+        return this.isbn10;
     }
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
+    public void setIsbn10(String isbn10) {
+        this.isbn10 = isbn10;
+    }
+
+    public String getIsbn13() {
+        return this.isbn13;
+    }
+    public void setIsbn13(String isbn13) {
+        this.isbn13 = isbn13;
     }
 
     public double getValor() {
