@@ -11,7 +11,7 @@ public class CadastroLivros{
     public static void main(String[] args) {
         ArrayList<Livros> livros = new ArrayList<Livros>();
         
-        Livros livro1 = new Livros();
+        LivroImpresso livro1 = new LivroImpresso();
         livro1.setNome("Sistemas Operacionais Modernos");
         livro1.setDescricao("A 4ª edição de Sistemas operacionais modernos foi extensamente revisada e atualizada para incorporar os últimos desenvolvimentos em tecnologias de sistemas operacionais. Além de tratar do sistema UNIX, o livro traz como novidade a abordagem do Windows 8 e 8.1, assim como um foco maior em Linux e a introdução da plataforma Android.");
         livro1.setIsbn("978-8543005676");
@@ -19,9 +19,12 @@ public class CadastroLivros{
         livro1.autor.setNome("Andrew Stuart Tanenbaum");
         livro1.autor.setEmail("tanenbaum@gmail.com");
         livro1.autor.setCpf("192.168.115.129-24");
+        livro1.setCapa("Comum");
+        livro1.setDimensoes("17,9 x 2,9 x 23,4 cm");
+        livro1.setPeso("1,7 Kg");
         livros.add(livro1);
 
-        Livros livro2 = new Livros();
+        LivroImpresso livro2 = new LivroImpresso();
         livro2.setNome("Organização Estruturada de Computadores");
         livro2.setDescricao("Esta sexta edição traz o que há de mais moderno em termos de organização estruturada de computadores, apresentando as terminologias, tecnologias e tendências mais recentes em organização e arquitetura de computadores. Com novos exemplos e discussões sobre x86, microcontroladores AVR e arquitetura ARM, Organização estruturada de computadores é uma obra indispensável para estudantes de ciência da computação, engenharia da computação, análise e desenvolvimento de sistemas e sistemas de informação, bem como para profissionais da área.");
         livro2.setIsbn("978-8581435398");
@@ -29,9 +32,12 @@ public class CadastroLivros{
         livro2.autor.setNome("Andrew Stuart Tanenbaum");
         livro2.autor.setEmail("tanenbaum@gmail.com");
         livro2.autor.setCpf("192.168.115.129-24");
+        livro2.setCapa("Comum");
+        livro2.setDimensoes("27,4 x 20,6 x 3,2 cm");
+        livro2.setPeso("1,4 Kg");
         livros.add(livro2);
 
-        EBooks livro3 = new EBooks();
+        EBook livro3 = new EBook();
         livro3.setNome("Clean Code: A Handbook of Agile Software Craftsmanship");
         livro3.setDescricao("Even bad code can function. But if code isn’t clean, it can bring a development organization to its knees. Every year, countless hours and significant resources are lost because of poorly written code. But it doesn’t have to be that way.");
         livro3.setIsbn("9780132350884");
