@@ -13,13 +13,10 @@ public class Livros{
 
     /*public*/ Autor autor = new Autor();
     public void mostrarInformacoes(){
-        System.out.println("\n\n=-=-=-=Livro=-=-=-=");
-        
         System.out.println("Nome: " + this.nome);
         System.out.println("Descrição: "+ this.descricao);
         System.out.println("ISBN: " + this.isbn);
         System.out.println("Valor: " + numberFormat.format(this.getValor()));
-        this.autor.mostrarInformacoes();
     }
 
     public String getNome() {

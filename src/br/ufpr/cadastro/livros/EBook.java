@@ -2,7 +2,7 @@ package br.ufpr.cadastro.livros;
 import java.util.Locale;
 import java.text.NumberFormat;
 
-class EBooks extends Livros{
+class EBook extends Livros{
     private String formato;
     private Boolean audio, demo;
     private double tamanho;    
@@ -12,12 +12,8 @@ class EBooks extends Livros{
     
     @Override
     public void mostrarInformacoes() {
-        System.out.println("\n\n=-=-=-=Livro (eBook)=-=-=-=");
-        
-        System.out.println("Nome: " + this.getNome());
-        System.out.println("Descrição: " + this.getDescricao());
-        System.out.println("ISBN: " + this.getIsbn());
-        System.out.println("Valor: " + numberFormat.format(this.getValor()));
+        System.out.println("\n\n=-=-=- Livro (eBook) -=-=-=");
+        super.mostrarInformacoes();
         System.out.println("Formato: " + formato);
         System.out.println("Tamanho: " + tamanho + "MB");
         if(audio == true){
