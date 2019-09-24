@@ -11,6 +11,10 @@ public class Livros{
     private String isbn13;
     private double valor;
 
+    public Livros(Autor autor){
+        this.autor = autor;
+    }
+
     Locale ptBR = new Locale("pt", "BR");
     NumberFormat numberFormat = NumberFormat.getCurrencyInstance(ptBR);
 

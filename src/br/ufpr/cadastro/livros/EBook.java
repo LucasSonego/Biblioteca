@@ -1,4 +1,5 @@
 package br.ufpr.cadastro.livros;
+import br.ufpr.cadastro.pessoa.Autor;
 import java.util.Locale;
 import java.text.NumberFormat;
 
@@ -7,10 +8,14 @@ class EBook extends Livros{
     private Boolean audio, demo;
     private double tamanho;    
 
+    public EBook(Autor autor){
+        super(autor);
+    }
+
     Locale ptBR = new Locale("pt", "BR");
     NumberFormat numberFormat = NumberFormat.getCurrencyInstance(ptBR);
-    
-    @Override
+
+	@Override
     public void mostrarInformacoes() {
         System.out.println("\n\n=-=-=- Livro (eBook) -=-=-=");
         super.mostrarInformacoes();
