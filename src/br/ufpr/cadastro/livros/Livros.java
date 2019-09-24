@@ -58,6 +58,13 @@ public class Livros{
         this.valor = valor;
     }
 
+    public Autor getAutor() {
+        return this.autor;
+    }
+    public void setAutor(Autor autor) {
+        this.autor = autor;
+    }
+
     public boolean reajustarValor(float reajuste, float maximo){
         if(reajuste <= maximo){
             this.setValor(valor+= valor*reajuste);
