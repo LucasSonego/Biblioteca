@@ -1,11 +1,17 @@
 package br.ufpr.cadastro.livros;
 
+import br.ufpr.cadastro.pessoa.Autor;
+
 public class LivroImpresso extends Livros {
     private String capa;
     private String peso;
     private String dimensoes;
 
-    @Override
+    public LivroImpresso(Autor autor) {
+        super(autor);
+	}
+
+	@Override
     public void mostrarInformacoes() {
         System.out.println("\n\n=-=-=-=-=- Livro -=-=-=-=-=");
         super.mostrarInformacoes();
