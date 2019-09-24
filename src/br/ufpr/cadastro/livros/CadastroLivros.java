@@ -3,6 +3,7 @@ package br.ufpr.cadastro.livros;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.text.NumberFormat;
+import br.ufpr.cadastro.pessoa.CadastroAutor;
 
 public class CadastroLivros{
 
@@ -10,16 +11,18 @@ public class CadastroLivros{
     static NumberFormat numberFormat = NumberFormat.getCurrencyInstance(ptBR);
     public static void main(String[] args) {
         ArrayList<Livros> livros = new ArrayList<Livros>();
+        CadastroAutor autores = new CadastroAutor();
         
+        autores.cadastrar("Andrew Stuart Tanenbaum", "192.168.115.129-24", "tanenbaum@gmail.com");
+        autores.cadastrar("Robert Cecil Martin", "101.001.110.100-01", "refactoring@gmail.com");
+
         LivroImpresso livro1 = new LivroImpresso();
         livro1.setNome("Sistemas Operacionais Modernos");
         livro1.setDescricao("A 4ª edição de Sistemas operacionais modernos foi extensamente revisada e atualizada para incorporar os últimos desenvolvimentos em tecnologias de sistemas operacionais. Além de tratar do sistema UNIX, o livro traz como novidade a abordagem do Windows 8 e 8.1, assim como um foco maior em Linux e a introdução da plataforma Android.");
         livro1.setIsbn10("8543005671");
         livro1.setIsbn13("978-8543005676");
         livro1.setValor(223.30);
-        livro1.autor.setNome("Andrew Stuart Tanenbaum");
-        livro1.autor.setEmail("tanenbaum@gmail.com");
-        livro1.autor.setCpf("192.168.115.129-24");
+        livro1.setAutor(autores.buscar("Andrew Stuart Tanenbaum"));
         livro1.setCapa("Comum");
         livro1.setDimensoes("17,9 x 2,9 x 23,4 cm");
         livro1.setPeso("1,7 Kg");
@@ -31,9 +34,7 @@ public class CadastroLivros{
         livro2.setIsbn10("8581435394");
         livro2.setIsbn13("978-8581435398");
         livro2.setValor(204.90);
-        livro2.autor.setNome("Andrew Stuart Tanenbaum");
-        livro2.autor.setEmail("tanenbaum@gmail.com");
-        livro2.autor.setCpf("192.168.115.129-24");
+        livro2.setAutor(autores.buscar("Andrew Stuart Tanenbaum"));
         livro2.setCapa("Comum");
         livro2.setDimensoes("27,4 x 20,6 x 3,2 cm");
         livro2.setPeso("1,4 Kg");
@@ -49,12 +50,10 @@ public class CadastroLivros{
         livro3.setTamanho(41.903);
         livro3.setAudio(false);
         livro3.setDemo(true);
-        livro3.autor.setNome("Robert C. Martin Series");
-        livro3.autor.setEmail("refactoring@gmail.com");
-        livro3.autor.setCpf("101.001.110.100-01");
+        livro3.setAutor(autores.buscar("Robert Cecil Martin"));
         livros.add(livro3);
 
-        livros.forEach(l->l.mostrarInformacoes());
+        livros.forEach(l -> l.mostrarInformacoes());
 
         final float maximo = (float) 0.3;
         float reajuste = (float) 0.25;
