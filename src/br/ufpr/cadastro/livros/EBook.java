@@ -5,28 +5,32 @@ import java.text.NumberFormat;
 
 class EBook extends Livros{
     private String formato;
-    private Boolean audio, demo;
+    private Boolean audio, amostra;
     private double tamanho;    
 
     public EBook(Autor autor){
         super(autor);
     }
 
-    Locale ptBR = new Locale("pt", "BR");
+    public EBook() {
+        super();
+	}
+
+	Locale ptBR = new Locale("pt", "BR");
     NumberFormat numberFormat = NumberFormat.getCurrencyInstance(ptBR);
 
 	@Override
     public void mostrarInformacoes() {
         System.out.println("\n\n=-=-=- Livro (eBook) -=-=-=");
         super.mostrarInformacoes();
-        System.out.println("Formato: " + formato);
-        System.out.println("Tamanho: " + tamanho + "MB");
-        if(audio == true){
+        System.out.println("Formato: " + this.formato);
+        System.out.println("Tamanho: " + this.tamanho + "MB");
+        if(this.audio == true){
             System.out.println("Audiobook: Disonivel");
         }else{
             System.out.println("Audiobook: Não Disonivel");
         }
-        if(demo == true){
+        if(this.amostra == true){
             System.out.println("Amostra: Disponivel");
         }else{
             System.out.println("Amostra: Não Disponivel");
@@ -49,17 +53,17 @@ class EBook extends Livros{
     }
     
     public Boolean getDemo() {
-        return this.demo;
+        return this.amostra;
     }
-    public void setDemo(Boolean demo) {
-        this.demo = demo;
+    public void setAmostra(Boolean amostra) {
+        this.amostra = amostra;
     }
 
     public double getTamanho() {
         return this.tamanho;
     }
-    public void setTamanho(double d) {
-        this.tamanho = d;
+    public void setTamanho(double tamanho) {
+        this.tamanho = tamanho;
     }
 
 }

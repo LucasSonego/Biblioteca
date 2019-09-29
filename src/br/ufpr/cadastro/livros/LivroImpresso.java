@@ -11,6 +11,10 @@ public class LivroImpresso extends Livros {
         super(autor);
 	}
 
+	public LivroImpresso() {
+        super();
+	}
+
 	@Override
     public void mostrarInformacoes() {
         System.out.println("\n\n=-=-=-=-=- Livro -=-=-=-=-=");

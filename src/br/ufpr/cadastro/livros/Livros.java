@@ -15,7 +15,15 @@ public class Livros{
         this.autor = autor;
     }
 
-    Locale ptBR = new Locale("pt", "BR");
+    public Livros() {
+        this.nome = "";
+        this.descricao = "";
+        this.isbn10 = "";
+        this.isbn13 = "";
+        this.valor = -1;
+    }
+    
+	Locale ptBR = new Locale("pt", "BR");
     NumberFormat numberFormat = NumberFormat.getCurrencyInstance(ptBR);
 
     /*public*/ Autor autor = new Autor();
