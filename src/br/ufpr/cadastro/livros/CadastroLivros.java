@@ -41,7 +41,6 @@ public class CadastroLivros{
                 inputInvalido();
             }
         }
-        this.scan.close();
     }
 
     public void cadastrar(String nome, String descricao, String isbn10, String isbn13, double valor, String capa, String dimensoes, String peso, Autor autor){
@@ -78,6 +77,26 @@ public class CadastroLivros{
             }
         }
         return null;
+    }
+
+    public void remover(){
+        int input;
+        boolean inputValido;
+        for(inputValido = false; inputValido != true;){
+            listarId();
+            System.out.println("Que livro você deseja remover?");
+            input = scan.nextInt();
+            scan.nextLine();
+            if(input>0 && input <= livros.size()+1){
+                remover(input-1);
+                inputValido = true;
+            }
+        }
+    }
+
+    public void remover(int index){
+        livros.remove(index);
+        System.out.println("Livro removido com sucesso");
     }
 
     public void remover(String nome){
@@ -137,8 +156,7 @@ public class CadastroLivros{
                 System.out.println("Insira os seguintes dados do autor:");
                 livro.setAutor(autores.inserirAutorReturn());
                 inputValido = true;
-            }
-            if(input == 2){
+            }else if(input == 2){
                 livro.setAutor(autores.selecionarAutor());
                 if(livro.getAutor() != null){
                     inputValido = true;
@@ -323,8 +341,7 @@ public class CadastroLivros{
                     reajustar(l, reajuste/100, limiteDeReajuste);
                 }
                 inputValido = true;
-            }
-            if(input == 2){   
+            }else if(input == 2){   
                 boolean inputValido2;
                 for(inputValido2 = false; inputValido2 != true;){
                     System.out.println("Qual o livro que você deseja reajustar o valor?");
@@ -357,6 +374,5 @@ public class CadastroLivros{
             System.out.println("O reajuste inserido excedeu o limite de "
              + String.format("%.2f", maximo*100) + "% de reajuste");
         }
-        scan.close();
     }   
 }

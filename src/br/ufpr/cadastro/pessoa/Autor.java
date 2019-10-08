@@ -79,7 +79,7 @@ public class Autor extends Pessoa {
                 inputValido = true;
             }else{
                 listarId();
-                System.out.println("Insira uma opção válida");
+                inputInvalido();
             }
         }
         return autores.get(index - 1);
@@ -102,6 +102,28 @@ public class Autor extends Pessoa {
         return null;
     }
 
+    public void remover(){
+        int input;
+        boolean inputValido;
+        for(inputValido = false; inputValido != true;){
+            listarId();
+            System.out.println("Que autor você deseja remover?");
+            input = scan.nextInt();
+            scan.nextLine();
+            if(input>0 && input <= autores.size()+1){
+                remover(input);
+                inputValido = true;
+            }else{
+                inputInvalido();
+            }
+        }
+    }
+
+    public void remover(int index){
+        autores.remove(index);
+        System.out.println("Autor removido com sucesso");
+    }
+
     public void remover(String nome){
         Autor r = buscar(nome);
         autores.remove(r);
@@ -118,6 +140,16 @@ public class Autor extends Pessoa {
         for(i=0; i < autores.size(); i++){
             System.out.println(i+1 + ": " + autores.get(i).getNome());
         }
+    }
+
+    public void listarInformacoes(){
+        for(Autor a: autores){
+            a.mostrarInformacoes();
+        }
+    }
+
+    private void inputInvalido(){
+        System.out.println("A opção inserida não existe...");
     }
 
 }
