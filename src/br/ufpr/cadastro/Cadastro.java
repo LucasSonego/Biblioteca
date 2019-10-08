@@ -1,6 +1,12 @@
 package br.ufpr.cadastro;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 import java.util.Scanner;
+import java.util.TimeZone;
 
 import br.ufpr.cadastro.livros.CadastroLivros;
 
@@ -20,6 +26,7 @@ public class Cadastro {
     }
 
     static void exibirOpcoes(){
+        dataEHora();
         System.out.println("\n"+
         "==================================\n"+
         "1: Listar Livros\n"+
@@ -79,6 +86,18 @@ public class Cadastro {
         try {
             System.in.read();
         } catch (Exception e) {}
+    }
+
+    static void dataEHora(){
+        Calendar horaAtual = Calendar.getInstance(TimeZone.getTimeZone("Brazil/East"));
+        SimpleDateFormat formatoDeHoras = new SimpleDateFormat("hh:mm:ss");
+        String hora = formatoDeHoras.format(horaAtual.getTime());
+        
+        Locale ptBR = new Locale("pt", "BR");
+        DateFormat formatoDeData = DateFormat.getDateInstance(DateFormat.FULL, ptBR);
+        String data = formatoDeData.format(new Date());
+        
+        System.out.println(data + "\n" + hora);
     }
 
     static void exemplos(CadastroLivros livros){
