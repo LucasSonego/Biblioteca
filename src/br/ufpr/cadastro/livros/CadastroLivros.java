@@ -5,13 +5,12 @@ import java.util.Locale;
 import java.util.Scanner;
 import java.text.NumberFormat;
 import br.ufpr.cadastro.pessoa.Autor;
-import br.ufpr.cadastro.pessoa.CadastroAutor;
 
 public class CadastroLivros{
     Scanner scan = new Scanner(System.in);
 
     ArrayList<Livros> livros = new ArrayList<Livros>();
-    public CadastroAutor autores = new CadastroAutor();
+    public Autor autores = new Autor();
     
     static Locale ptBR = new Locale("pt", "BR");
     static NumberFormat numberFormat = NumberFormat.getCurrencyInstance(ptBR);
@@ -42,7 +41,6 @@ public class CadastroLivros{
                 inputInvalido();
             }
         }
-        this.scan.close();
     }
 
     public void cadastrar(String nome, String descricao, String isbn10, String isbn13, double valor, String capa, String dimensoes, String peso, Autor autor){
@@ -81,6 +79,26 @@ public class CadastroLivros{
         return null;
     }
 
+    public void remover(){
+        int input;
+        boolean inputValido;
+        for(inputValido = false; inputValido != true;){
+            listarId();
+            System.out.println("Que livro você deseja remover?");
+            input = scan.nextInt();
+            scan.nextLine();
+            if(input>0 && input <= livros.size()+1){
+                remover(input-1);
+                inputValido = true;
+            }
+        }
+    }
+
+    public void remover(int index){
+        livros.remove(index);
+        System.out.println("Livro removido com sucesso");
+    }
+
     public void remover(String nome){
         Livros l = buscar(nome);
         livros.remove(l);
@@ -89,6 +107,13 @@ public class CadastroLivros{
     public void listar(){
         for(Livros l : livros){
             System.out.println(l.getNome());
+        }
+    }
+
+    public void listarId(){
+        int i;
+        for(i=0; i < livros.size(); i++){
+            System.out.println(i+1 + ": " + livros.get(i).getNome());
         }
     }
 
@@ -131,8 +156,7 @@ public class CadastroLivros{
                 System.out.println("Insira os seguintes dados do autor:");
                 livro.setAutor(autores.inserirAutorReturn());
                 inputValido = true;
-            }
-            if(input == 2){
+            }else if(input == 2){
                 livro.setAutor(autores.selecionarAutor());
                 if(livro.getAutor() != null){
                     inputValido = true;
@@ -301,6 +325,43 @@ public class CadastroLivros{
         System.out.println("A opção inserida não existe...");
     }
 
+
+    public void reajustar(){
+        boolean inputValido;
+        for(inputValido = false; inputValido != true;){
+            System.out.println("1: Aplicar reajuste para todos os livros\n"+
+            "2: Aplicar reajuste para um livro");
+            int input = scan.nextInt();
+            scan.nextLine();
+            float limiteDeReajuste = (float)0.3;
+            if(input == 1){
+                System.out.println("Qual o valor do reajuste? (%)");
+                float reajuste = scan.nextFloat();
+                for(Livros l: livros){
+                    reajustar(l, reajuste/100, limiteDeReajuste);
+                }
+                inputValido = true;
+            }else if(input == 2){   
+                boolean inputValido2;
+                for(inputValido2 = false; inputValido2 != true;){
+                    System.out.println("Qual o livro que você deseja reajustar o valor?");
+                    listarId();
+                    input = scan.nextInt();
+                    scan.nextLine();
+                    if(input > 0 && input <= livros.size()+1){
+                        System.out.println("Qual o valor do reajuste? (%)");
+                        float reajuste = scan.nextFloat();
+                        reajustar(livros.get(input-1), reajuste/100, limiteDeReajuste);
+                        inputValido2 = true;
+                    }
+                }
+                inputValido = true;
+            }else{
+                inputInvalido();
+            }
+        }
+    }
+
     public void reajustar(Livros livro, float reajuste, float maximo){
         double valor = livro.getValor();
         System.out.println("\nReajustando o valor do livro " + livro.getNome() + "...\n");
@@ -313,6 +374,5 @@ public class CadastroLivros{
             System.out.println("O reajuste inserido excedeu o limite de "
              + String.format("%.2f", maximo*100) + "% de reajuste");
         }
-        scan.close();
     }   
 }
