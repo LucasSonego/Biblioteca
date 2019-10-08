@@ -12,6 +12,7 @@ import br.ufpr.cadastro.livros.CadastroLivros;
 
 public class Cadastro {
     static CadastroLivros livros = new CadastroLivros();
+    static Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) {
         
@@ -30,24 +31,27 @@ public class Cadastro {
         System.out.println("\n"+
         "==================================\n"+
         "1: Listar Livros\n"+
-        "2: Listar Autores\n"+
-        "3: Cadastrar um livro\n"+
-        "4: Cadastrar um autor\n"+
-        "5: Reajustar preços\n"+
-        "6: Sair\n"+
+        "2: Listar Livros com detalhes\n"+
+        "3: Listar Autores\n"+
+        "4: Listar Autores com detalhes\n"+
+        "5: Cadastrar um livro\n"+
+        "6: Cadastrar um autor\n"+
+        "7: Remover um livro\n"+
+        "8: Remover um autor\n"+
+        "9: Reajustar preços\n"+
+        "0: Sair\n"+
         "==================================\n");
     }
 
     static void menu(CadastroLivros livros){
         while(true){
             exibirOpcoes();
-            int escolha = 0;
+            int escolha = 11;
             boolean inputValido = false;
             for(inputValido = false; inputValido != true;){
-                Scanner scan = new Scanner(System.in);
                 escolha = scan.nextInt();
                 scan.nextLine();
-                if(escolha > 0 && escolha <= 6){
+                if(escolha >= 0 && escolha <= 9){
                     inputValido = true;
                 }else{
                     inputInvalido();
@@ -60,18 +64,30 @@ public class Cadastro {
                     livros.listar();
                     break;
                 case 2:
-                    livros.autores.listar();
+                    livros.listarInformacoes();
                     break;
                 case 3:
-                    livros.cadastrar();
+                    livros.autores.listar();
                     break;
                 case 4:
-                    livros.autores.cadastrar();
+                    livros.autores.listarInformacoes();
                     break;
                 case 5:
-                    livros.reajustar();
+                    livros.cadastrar();
                     break;
                 case 6:
+                    livros.autores.cadastrar();
+                    break;
+                case 7:
+                    livros.remover();
+                    break;
+                case 8:
+                    livros.autores.remover();
+                    break;
+                case 9:
+                    livros.reajustar();
+                    break;
+                case 0:
                     System.exit(0);
                 default:
                     System.err.println("Há algo de errado que não está certo");
@@ -82,7 +98,7 @@ public class Cadastro {
     }
 
     static void hold(){
-        System.out.println("\nPressione qualquer tecla para continuar...");
+        System.out.println("\nPressione enter para continuar...");
         try {
             System.in.read();
         } catch (Exception e) {}
