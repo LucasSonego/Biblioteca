@@ -11,6 +11,11 @@ public class Livros{
     private String isbn13;
     private double valor;
 
+    Locale ptBR = new Locale("pt", "BR");
+    NumberFormat numberFormat = NumberFormat.getCurrencyInstance(ptBR);
+
+    public Autor autor = new Autor();
+
     public Livros(Autor autor){
         this.autor = autor;
     }
@@ -22,17 +27,23 @@ public class Livros{
         this.isbn13 = "";
         this.valor = -1;
     }
-    
-	Locale ptBR = new Locale("pt", "BR");
-    NumberFormat numberFormat = NumberFormat.getCurrencyInstance(ptBR);
 
-    /*public*/ Autor autor = new Autor();
     public void mostrarInformacoes(){
         System.out.println("Nome: " + this.nome);
         System.out.println("Descrição: "+ this.descricao);
         System.out.println("ISBN-10: " + this.isbn10);
         System.out.println("ISBN-13: " + this.isbn13);
         System.out.println("Valor: " + numberFormat.format(this.getValor()));
+    }
+
+    public boolean reajustarValor(float reajuste, float maximo){
+        if(reajuste <= maximo){
+            this.setValor(valor+= valor*reajuste);
+            return true;
+            
+        }else{
+            return false;
+        }
     }
 
     public String getNome() {
@@ -75,15 +86,5 @@ public class Livros{
     }
     public void setAutor(Autor autor) {
         this.autor = autor;
-    }
-
-    public boolean reajustarValor(float reajuste, float maximo){
-        if(reajuste <= maximo){
-            this.setValor(valor+= valor*reajuste);
-            return true;
-            
-        }else{
-            return false;
-        }
     }
 }

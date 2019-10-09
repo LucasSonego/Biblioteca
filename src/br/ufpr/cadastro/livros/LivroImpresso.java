@@ -28,7 +28,6 @@ public class LivroImpresso extends Livros {
     public String getCapa() {
         return this.capa;
     }
-
     public void setCapa(String capa) {
         this.capa = capa;
     }
@@ -36,7 +35,6 @@ public class LivroImpresso extends Livros {
     public String getPeso() {
         return this.peso;
     }
-
     public void setPeso(String peso) {
         this.peso = peso;
     }
@@ -44,7 +42,6 @@ public class LivroImpresso extends Livros {
     public String getDimensoes() {
         return this.dimensoes;
     }
-
     public void setDimensoes(String dimensoes) {
         this.dimensoes = dimensoes;
     }
