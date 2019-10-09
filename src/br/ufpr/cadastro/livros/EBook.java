@@ -8,6 +8,9 @@ class EBook extends Livros{
     private Boolean audio, amostra;
     private double tamanho;    
 
+    Locale ptBR = new Locale("pt", "BR");
+    NumberFormat numberFormat = NumberFormat.getCurrencyInstance(ptBR);
+
     public EBook(Autor autor){
         super(autor);
     }
@@ -15,9 +18,6 @@ class EBook extends Livros{
     public EBook() {
         super();
 	}
-
-	Locale ptBR = new Locale("pt", "BR");
-    NumberFormat numberFormat = NumberFormat.getCurrencyInstance(ptBR);
 
 	@Override
     public void mostrarInformacoes() {
@@ -51,7 +51,7 @@ class EBook extends Livros{
     public void setAudio(Boolean audio) {
         this.audio = audio;
     }
-    
+
     public Boolean getDemo() {
         return this.amostra;
     }
@@ -65,5 +65,4 @@ class EBook extends Livros{
     public void setTamanho(double tamanho) {
         this.tamanho = tamanho;
     }
-
 }

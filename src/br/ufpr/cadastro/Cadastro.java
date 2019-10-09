@@ -26,23 +26,6 @@ public class Cadastro {
         livros.autores.listarId();
     }
 
-    static void exibirOpcoes(){
-        dataEHora();
-        System.out.println("\n"+
-        "==================================\n"+
-        "1: Listar Livros\n"+
-        "2: Listar Livros com detalhes\n"+
-        "3: Listar Autores\n"+
-        "4: Listar Autores com detalhes\n"+
-        "5: Cadastrar um livro\n"+
-        "6: Cadastrar um autor\n"+
-        "7: Remover um livro\n"+
-        "8: Remover um autor\n"+
-        "9: Reajustar preços\n"+
-        "0: Sair\n"+
-        "==================================\n");
-    }
-
     static void menu(CadastroLivros livros){
         while(true){
             exibirOpcoes();
@@ -97,11 +80,21 @@ public class Cadastro {
         }
     }
 
-    static void hold(){
-        System.out.println("\nPressione enter para continuar...");
-        try {
-            System.in.read();
-        } catch (Exception e) {}
+    static void exibirOpcoes(){
+        dataEHora();
+        System.out.println("\n"+
+        "==================================\n"+
+        "1: Listar Livros\n"+
+        "2: Listar Livros com detalhes\n"+
+        "3: Listar Autores\n"+
+        "4: Listar Autores com detalhes\n"+
+        "5: Cadastrar um livro\n"+
+        "6: Cadastrar um autor\n"+
+        "7: Remover um livro\n"+
+        "8: Remover um autor\n"+
+        "9: Reajustar preços\n"+
+        "0: Sair\n"+
+        "==================================\n");
     }
 
     static void dataEHora(){
@@ -117,8 +110,8 @@ public class Cadastro {
     }
 
     static void exemplos(CadastroLivros livros){
-        livros.autores.cadastrar("Andrew Stuart Tanenbaum", "192.168.115.129-24", "tanenbaum@gmail.com");
-        livros.autores.cadastrar("Robert Cecil Martin", "101.001.110.100-01", "refactoring@gmail.com");
+        livros.autores.cadastrar("Andrew Stuart Tanenbaum", "tanenbaum@gmail.com", "192.168.115.129-24");
+        livros.autores.cadastrar("Robert Cecil Martin", "refactoring@gmail.com", "101.001.110.100-01");
 
         livros.cadastrar(
             "Sistemas Operacionais Modernos", 
@@ -144,6 +137,13 @@ public class Cadastro {
             true, 
             livros.autores.buscar("Robert Cecil Martin")
         );
+    }
+
+    static void hold(){
+        System.out.println("\nPressione enter para continuar...");
+        try {
+            System.in.read();
+        } catch (Exception e) {}
     }
 
     static void inputInvalido(){

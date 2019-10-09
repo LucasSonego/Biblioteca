@@ -123,6 +123,56 @@ public class CadastroLivros{
         }
     }
 
+    public void reajustar(){
+        boolean inputValido;
+        for(inputValido = false; inputValido != true;){
+            System.out.println("1: Aplicar reajuste para todos os livros\n"+
+            "2: Aplicar reajuste para um livro");
+            int input = scan.nextInt();
+            scan.nextLine();
+            float limiteDeReajuste = (float)0.3;
+            if(input == 1){
+                System.out.println("Qual o valor do reajuste? (%)");
+                float reajuste = scan.nextFloat();
+                for(Livros l: livros){
+                    reajustar(l, reajuste/100, limiteDeReajuste);
+                }
+                inputValido = true;
+            }else if(input == 2){   
+                boolean inputValido2;
+                for(inputValido2 = false; inputValido2 != true;){
+                    System.out.println("Qual o livro que você deseja reajustar o valor?");
+                    listarId();
+                    input = scan.nextInt();
+                    scan.nextLine();
+                    if(input > 0 && input <= livros.size()+1){
+                        System.out.println("Qual o valor do reajuste? (%)");
+                        float reajuste = scan.nextFloat();
+                        reajustar(livros.get(input-1), reajuste/100, limiteDeReajuste);
+                        inputValido2 = true;
+                    }
+                }
+                inputValido = true;
+            }else{
+                inputInvalido();
+            }
+        }
+    }
+
+    public void reajustar(Livros livro, float reajuste, float limite){
+        double valor = livro.getValor();
+        System.out.println("\nReajustando o valor do livro " + livro.getNome() + "...\n");
+        if(livro.reajustarValor(reajuste, limite) == true){
+            System.out.println("Valor reajustado em: "
+             + String.format("%.1f", reajuste*100) + "%");
+            System.out.println(numberFormat.format(valor)+ " -> " + numberFormat.format(livro.getValor()));
+        }else{
+            System.out.println("Não foi possivel reajustar o valor");
+            System.out.println("O reajuste inserido excedeu o limite de "
+             + String.format("%.2f", limite*100) + "% de reajuste");
+        }
+    }   
+
     private void inserirCamposLivro(Livros livro){
         inserirNome(livro);
         inserirDescricao(livro);
@@ -324,55 +374,4 @@ public class CadastroLivros{
     private void inputInvalido(){
         System.out.println("A opção inserida não existe...");
     }
-
-
-    public void reajustar(){
-        boolean inputValido;
-        for(inputValido = false; inputValido != true;){
-            System.out.println("1: Aplicar reajuste para todos os livros\n"+
-            "2: Aplicar reajuste para um livro");
-            int input = scan.nextInt();
-            scan.nextLine();
-            float limiteDeReajuste = (float)0.3;
-            if(input == 1){
-                System.out.println("Qual o valor do reajuste? (%)");
-                float reajuste = scan.nextFloat();
-                for(Livros l: livros){
-                    reajustar(l, reajuste/100, limiteDeReajuste);
-                }
-                inputValido = true;
-            }else if(input == 2){   
-                boolean inputValido2;
-                for(inputValido2 = false; inputValido2 != true;){
-                    System.out.println("Qual o livro que você deseja reajustar o valor?");
-                    listarId();
-                    input = scan.nextInt();
-                    scan.nextLine();
-                    if(input > 0 && input <= livros.size()+1){
-                        System.out.println("Qual o valor do reajuste? (%)");
-                        float reajuste = scan.nextFloat();
-                        reajustar(livros.get(input-1), reajuste/100, limiteDeReajuste);
-                        inputValido2 = true;
-                    }
-                }
-                inputValido = true;
-            }else{
-                inputInvalido();
-            }
-        }
-    }
-
-    public void reajustar(Livros livro, float reajuste, float maximo){
-        double valor = livro.getValor();
-        System.out.println("\nReajustando o valor do livro " + livro.getNome() + "...\n");
-        if(livro.reajustarValor(reajuste, maximo) == true){
-            System.out.println("Valor reajustado em: "
-             + String.format("%.1f", reajuste*100) + "%");
-            System.out.println(numberFormat.format(valor)+ " -> " + numberFormat.format(livro.getValor()));
-        }else{
-            System.out.println("Não foi possivel reajustar o valor");
-            System.out.println("O reajuste inserido excedeu o limite de "
-             + String.format("%.2f", maximo*100) + "% de reajuste");
-        }
-    }   
 }

@@ -5,6 +5,9 @@ import java.util.Scanner;
 
 public class Autor extends Pessoa {
 
+    private ArrayList<Autor> autores = new ArrayList<Autor>();
+    Scanner scan = new Scanner(System.in);
+
     public void mostrarInformacoes(){
         System.out.println("\n=-=-= Autor =-=-=-=");
         System.out.println("Nome: " + this.getNome());
@@ -12,15 +15,20 @@ public class Autor extends Pessoa {
         System.out.println("CPF: " + this.getCpf());
     }
 
-    private ArrayList<Autor> autores = new ArrayList<Autor>();
-    Scanner scan = new Scanner(System.in);
-
     public void cadastrar(){
         Autor autor = new Autor();
         inserirNome(autor);
         inserirEmail(autor);
         inserirCpf(autor);
         autores.add(autor);
+    }
+
+    public void cadastrar(String nome, String email, String cpf){
+        Autor novoAutor = new Autor();
+        novoAutor.setNome(nome);
+        novoAutor.setCpf(cpf);
+        novoAutor.setEmail(email);
+        autores.add(novoAutor);
     }
 
     public Autor inserirAutorReturn(){
@@ -32,7 +40,7 @@ public class Autor extends Pessoa {
         return autor;
     }
     
-    private void inserirNome(Autor autor){
+    public void inserirNome(Autor autor){
         boolean inputValido;
         for(inputValido = false; inputValido != true;){
             System.out.println("Nome: ");
@@ -44,7 +52,7 @@ public class Autor extends Pessoa {
         }
     }
 
-    private void inserirEmail(Autor autor){
+    public void inserirEmail(Autor autor){
         boolean inputValido;
         for(inputValido = false; inputValido != true;){
             System.out.println("Email: ");
@@ -56,7 +64,7 @@ public class Autor extends Pessoa {
         }
     }
 
-    private void inserirCpf(Autor autor){
+    public void inserirCpf(Autor autor){
         boolean inputValido;
         for(inputValido = false; inputValido != true;){
             System.out.println("CPF: ");
@@ -85,14 +93,6 @@ public class Autor extends Pessoa {
         return autores.get(index - 1);
     }
 
-    public void cadastrar(String nome, String cpf, String email){
-        Autor novoAutor = new Autor();
-        novoAutor.setNome(nome);
-        novoAutor.setCpf(cpf);
-        novoAutor.setEmail(email);
-        autores.add(novoAutor);
-    }
-
     public Autor buscar(String nome){
         for(Autor a : autores){
             if(a.getNome() != null && a.getNome().contains(nome)){
@@ -111,7 +111,7 @@ public class Autor extends Pessoa {
             input = scan.nextInt();
             scan.nextLine();
             if(input>0 && input <= autores.size()+1){
-                remover(input);
+                remover(input-1);
                 inputValido = true;
             }else{
                 inputInvalido();
