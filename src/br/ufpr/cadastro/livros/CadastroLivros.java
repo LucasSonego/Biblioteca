@@ -105,21 +105,34 @@ public class CadastroLivros{
     }
 
     public void listar(){
-        for(Livros l : livros){
-            System.out.println(l.getNome());
-        }
+        if(livros.size() == 0){
+            System.out.println("Não há nanhum livro cadastrado...");
+        }else{
+            for(Livros l : livros){
+                System.out.println(l.getNome());
+            }
+        }  
     }
 
     public void listarId(){
         int i;
-        for(i=0; i < livros.size(); i++){
-            System.out.println(i+1 + ": " + livros.get(i).getNome());
+        if(livros.size() == 0){
+            System.out.println("Não há nanhum livro cadastrado...");
+        }else{
+            for(i=0; i < livros.size(); i++){
+                System.out.println(i+1 + ": " + livros.get(i).getNome());
+            }
         }
+        
     }
 
     public void listarInformacoes(){
-        for(Livros l : livros){
-            l.mostrarInformacoes();
+        if(livros.size() == 0){
+            System.out.println("Não há nanhum livro cadastrado...");
+        }else{
+            for(Livros l : livros){
+                l.mostrarInformacoes();
+            }
         }
     }
 
