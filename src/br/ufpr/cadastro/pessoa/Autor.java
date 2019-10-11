@@ -130,21 +130,33 @@ public class Autor extends Pessoa {
     }
 
     public void listar(){
-        for(Autor a : autores){
-            System.out.println(a.getNome());
+        if(autores.size() == 0){
+            System.out.println("Não há nanhum autor cadastrado...");
+        }else{
+            for(Autor a : autores){
+                System.out.println(a.getNome());
+            }
         }
     }
 
     public void listarId(){
-        int i;
-        for(i=0; i < autores.size(); i++){
-            System.out.println(i+1 + ": " + autores.get(i).getNome());
+        if(autores.size() == 0){
+            System.out.println("Não há nanhum autor cadastrado...");
+        }else{
+            int i;
+            for(i=0; i < autores.size(); i++){
+                System.out.println(i+1 + ": " + autores.get(i).getNome());
+            }
         }
     }
 
     public void listarInformacoes(){
-        for(Autor a: autores){
-            a.mostrarInformacoes();
+        if(autores.size() == 0){
+            System.out.println("Não há nanhum autor cadastrado...");
+        }else{
+            for(Autor a: autores){
+                a.mostrarInformacoes();
+            }
         }
     }
 

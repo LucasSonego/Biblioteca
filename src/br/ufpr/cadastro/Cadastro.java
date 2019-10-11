@@ -111,7 +111,7 @@ public class Cadastro {
 
     static void exemplos(CadastroLivros livros){
         livros.autores.cadastrar("Andrew Stuart Tanenbaum", "tanenbaum@gmail.com", "192.168.115.129-24");
-        livros.autores.cadastrar("Robert Cecil Martin", "refactoring@gmail.com", "101.001.110.100-01");
+        livros.autores.cadastrar("Uncle Bob (Robert Cecil Martin)", "refactoring@gmail.com", "101.001.110.100-01");
 
         livros.cadastrar(
             "Sistemas Operacionais Modernos", 
